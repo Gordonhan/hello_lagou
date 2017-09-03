@@ -15,7 +15,7 @@ def link_crawler(seed_url, delay=3, data=None, callback=None):
     while crawl_queue:
         url = crawl_queue.pop()
         html = d(url, data)
-
+        print html
         if callback:
             link = callback(html)
             if link is not None:

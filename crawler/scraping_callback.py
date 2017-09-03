@@ -7,8 +7,8 @@ import lxml.html
 
 
 class ScrapingCallback(object):
-    def __init__(self):
-        pass
+    def __init__(self, cache=None):
+        self.cache = cache
 
     def __call__(self, html):
         tree = lxml.html.fromstring(html)
@@ -28,4 +28,7 @@ class ScrapingCallback(object):
                 'experience': experience,
             })
         print result
+        if self.cache is not None and len(result) > 0:
+            self.cache.insert(result)
+
         return tree.xpath(".//div[@id='s_position_list']//div[@class='pager_container']/a")[-1].get('href')
