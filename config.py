@@ -47,3 +47,6 @@ HEADER = {
     'Accept-Encoding': 'gzip, deflate',
     'Connection': 'keep-alive'
 }
+
+DB = 'lagou'
+DATA_COLL = 'jobs'
